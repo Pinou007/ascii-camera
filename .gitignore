@@ -1,0 +1,27 @@
+# Node dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Android build artifacts & SDK
+android-sdk/
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+android/.idea/
+android/*.iml
+android/app/*.iml
+
+# Electron distribution
+dist-electron/
+
+# Temporary storage
+.tempmediaStorage/
+.system_generated/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

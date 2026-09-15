@@ -1,0 +1,50 @@
+{
+  "name": "asciicamera",
+  "version": "1.2.0",
+  "description": "ASCII Camera Pro - Native Camera WebApp, Android APK & Windows Desktop",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:web": "node build-web.js",
+    "build:apk": "node write-android-licenses.js && cd android && gradlew.bat assembleDebug",
+    "build:exe": "electron-builder --win portable"
+  },
+  "build": {
+    "appId": "fr.pinou007.asciicamera",
+    "productName": "ASCII Camera Pro",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "win": {
+      "target": "portable"
+    },
+    "files": [
+      "index.html",
+      "404.html",
+      "version.html",
+      "manifest.json",
+      "css/**/*",
+      "js/**/*",
+      "assets/**/*",
+      "electron-main.js",
+      "electron-preload.js"
+    ]
+  },
+  "keywords": [
+    "ascii",
+    "camera",
+    "art",
+    "webcam"
+  ],
+  "author": "Pinou007",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/core": "^6.0.0"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  }
+}

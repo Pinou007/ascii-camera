@@ -1,0 +1,13 @@
+{
+  "appId": "fr.pinou007.asciicamera",
+  "appName": "ASCII Camera Pro",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": true,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": true
+  }
+}

@@ -1208,18 +1208,24 @@ document.addEventListener('DOMContentLoaded', async () => {
   btnFinishOnboard.addEventListener('click', finishOnboarding);
 
   async function finishOnboarding() {
+    settings.onboarded = true;
     settings.onboardingCompleted = true;
     storage.save(settings);
-    onboardingContainer.classList.remove('active');
+    if (onboardingContainer) onboardingContainer.classList.remove('active');
     await launchCamera();
   }
 
-  // App Startup
-  if (!settings.onboardingCompleted) {
-    onboardingContainer.classList.add('active');
-    showOnboardStep(0);
-  } else {
-    onboardingContainer.classList.remove('active');
+  // App Startup (Immediately launches camera on native apps and when onboarded)
+  const isNativeApp = isCapacitorNative || isElectronApp;
+  if (isNativeApp || settings.onboarded || settings.onboardingCompleted) {
+    if (onboardingContainer) onboardingContainer.classList.remove('active');
     await launchCamera();
+  } else {
+    if (onboardingContainer) {
+      onboardingContainer.classList.add('active');
+      showOnboardStep(0);
+    } else {
+      await launchCamera();
+    }
   }
 });
